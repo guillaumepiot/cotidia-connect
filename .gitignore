@@ -1,0 +1,18 @@
+*.pyc
+.DS_Store
+.vscode/
+dev
+db
+media
+keyset
+venv
+www/.sass-cache
+/static/
+
+# anything called node_modules
+node_modules
+dump.rdb
+npm-debug.log
+jobsheet.js
+jobsheet.js.map
+data
