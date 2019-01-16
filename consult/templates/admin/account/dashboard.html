@@ -1,0 +1,110 @@
+{% extends "admin/page.html" %}{% load i18n %}
+{% block title %}
+    {% trans "Dashboard" %}
+{% endblock title %}
+
+{% block header_scripts %}
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+{% endblock header_scripts %}
+
+{% block body_class %}content--padded{% endblock body_class %}
+
+{% block content_title %}{% trans "Dashboard" %}{% endblock content_title %}
+
+{% block page_content %}
+<div class="content__body">
+    <div class="content__inner">
+        <div class="dashboard__row">
+            <div class="dashboard__widget">
+                <div class="widget-title">Bookings per month</div>
+                <canvas id="income"></canvas>
+            </div>
+        </div>
+        <div class="dashboard__row">
+            <div class="dashboard__widget">
+                <div class="widget-title">Services provided</div>
+                <canvas id="countries"></canvas>
+            </div>
+            <div class="dashboard__widget">
+                <div class="widget-title">Donation value (£)</div>
+                <canvas id="buyers"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}
+
+{% block footer_scripts %}
+{{block.super}}
+<script>
+    // line chart data
+    var buyerData = {
+        labels : ["January","February","March","April","May","June", "July", 'August', "September", "October", "November", "December"],
+        datasets : [
+        {
+            fillColor : "rgba(193,227,242,0.4)",
+            strokeColor : "#00132e",
+            pointColor : "#fff",
+            pointStrokeColor : "#00132e",
+            data : [203,156,99,251,305,247,203,156,99,251,305,247]
+        }
+    ]
+    }
+    // get line chart canvas
+    var buyers = document.getElementById('buyers').getContext('2d');
+    // draw line chart
+    new Chart(buyers).Line(buyerData);
+    // pie chart data
+    var pieData = [
+        {
+            value: 20,
+            color:"#878BB6",
+            label: "Hygiene"
+        },
+        {
+            value : 40,
+            color : "#4ACAB4",
+            label: "Cavity"
+        },
+        {
+            value : 10,
+            color : "#FF8153",
+            label: "Implants"
+        },
+        {
+            value : 30,
+            color : "#FFEA88",
+            label: "Check-up"
+        }
+    ];
+    // pie chart options
+    var pieOptions = {
+         segmentShowStroke : false,
+         animateScale : true
+    }
+    // get pie chart canvas
+    var countries= document.getElementById("countries").getContext("2d");
+    // draw pie chart
+    new Chart(countries).Pie(pieData, pieOptions);
+    // bar chart data
+    var barData = {
+        labels : ["January","February","March","April","May","June", "July", 'August', "September", "October", "November", "December"],
+        datasets : [
+            {
+                fillColor : "#00132e",
+                strokeColor : "#00132e",
+                data : [456,479,324,569,702,600, 364,504,605,400,345,320]
+            },
+            {
+                fillColor : "#c1e3f2",
+                strokeColor : "#c1e3f2",
+                data : [364,504,605,400,345,320, 456,479,324,569,702,600]
+            }
+        ]
+    }
+    // get bar chart canvas
+    var income = document.getElementById("income").getContext("2d");
+    // draw bar chart
+    new Chart(income).Bar(barData);
+</script>
+{% endblock footer_scripts %}

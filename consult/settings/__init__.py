@@ -81,7 +81,7 @@ ROOT_URLCONF = "consult.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates/")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -226,7 +226,7 @@ AUTHOR_URL = "https://cotidia.com"
 AUTHOR = "Cotidia"
 
 ADMIN_MENU_DEFINITION = {
-    "Menu": ["cotidia.team", "cotidia.account"],
+    "Menu": ["consult", "cotidia.team", "cotidia.account"],
     "Mail": ["cotidia.mail"],
     # "Actionable": ["cotidia.actionable"],
 }

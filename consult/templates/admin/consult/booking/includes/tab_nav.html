@@ -1,0 +1,10 @@
+<div class="tabs tabs--borderless">
+    <div class="tabs__nav">
+        <a href="{% url 'consult-admin:booking-calendar' %}" class="tab__label{% if request.path == '/admin/consult/booking/calendar/' %} tab__label--active{% endif %}">
+            Calendar
+        </a>
+        <a href="{% url 'consult-admin:booking-list' %}" class="tab__label{% if request.path == '/admin/consult/booking/' %} tab__label--active{% endif %}">
+            List
+        </a>
+    </div>
+</div>
