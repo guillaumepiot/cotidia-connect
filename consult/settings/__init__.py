@@ -191,7 +191,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 EMAIL_HOST = "smtp.mandrillapp.com"
-EMAIL_HOST_USER = "guillaumepiot"
+EMAIL_HOST_USER = os.path.join("MANDRILL_USERNAME", "key-not-set")
 EMAIL_HOST_PASSWORD = os.path.join("MANDRILL_API_KEY", "key-not-set")
 
 COTIMAIL_REPLY_EMAIL = DEFAULT_FROM_EMAIL
