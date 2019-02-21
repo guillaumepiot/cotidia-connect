@@ -12,6 +12,7 @@ class BookingAdminSerializer(BaseDynamicListSerializer):
     service_type = ServiceTypeAdminSerializer()
     member = MemberAdminSerializer()
     customer = CustomerAdminSerializer()
+    status = serializers.CharField()
 
     class Meta:
         model = Booking
@@ -20,7 +21,14 @@ class BookingAdminSerializer(BaseDynamicListSerializer):
     class SearchProvider:
         display_field = "name"
         filters = "__all__"
-        default_columns = ["datetime", "time", "member", "customer", "service_type"]
+        default_columns = [
+            "datetime",
+            "time",
+            "member",
+            "customer",
+            "service_type",
+            "status",
+        ]
         general_query_fields = [
             "member__first_name",
             "member__last_name",

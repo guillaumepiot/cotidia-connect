@@ -1,3 +1,5 @@
+from django.http import HttpResponseRedirect
+
 from cotidia.admin.views import (
     AdminListView,
     AdminDetailView,
@@ -7,7 +9,11 @@ from cotidia.admin.views import (
 )
 
 from consult.models import Booking
-from consult.forms.admin.booking import BookingAddForm, BookingUpdateForm
+from consult.forms.admin.booking import (
+    BookingAddForm,
+    BookingUpdateForm,
+    BookingCancelForm,
+)
 
 
 class BookingCalendar(AdminListView):
@@ -31,8 +37,13 @@ class BookingDetail(AdminDetailView):
                 [{"label": "Notes", "field": "notes"}],
                 [{"label": "Member", "field": "member"}],
                 [{"label": "Customer", "field": "customer"}],
+                [{"label": "Status", "field": "status"}],
             ],
-        }
+        },
+        {
+            "legend": "Status history",
+            "template_name": "admin/generic/utils/status-history.html",
+        },
     ]
 
 
@@ -51,3 +62,18 @@ class BookingUpdate(AdminUpdateView):
 class BookingDelete(AdminDeleteView):
     model = Booking
     permission_required = "app.delete_booking"
+
+
+class BookingCancel(BookingUpdate):
+    form_class = BookingCancelForm
+    template_name = "admin/consult/booking/cancel.html"
+
+    def form_valid(self, form):
+        obj = self.get_object()
+        obj.status_set(
+            "CANCELLED",
+            user=self.request.user,
+            taxonomy="status",
+            notes=form.cleaned_data["status_notes"],
+        )
+        return HttpResponseRedirect(self.get_success_url())

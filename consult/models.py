@@ -1,6 +1,7 @@
 from django.db import models
 
 from cotidia.core.models import BaseModel, BaseAddress
+from cotidia.core.mixins import StatusModelMixin
 
 
 class Customer(BaseModel, BaseAddress):
@@ -44,7 +45,7 @@ class Customer(BaseModel, BaseAddress):
         return "ff8a25"
 
 
-class Booking(BaseModel):
+class Booking(BaseModel, StatusModelMixin):
     datetime = models.DateTimeField()
     cost = models.DecimalField(max_digits=9, decimal_places=2)
     service_type = models.ForeignKey("consult.ServiceType", on_delete=models.PROTECT)
@@ -52,6 +53,8 @@ class Booking(BaseModel):
     notes = models.TextField(max_length=500)
     member = models.ForeignKey("team.Member", on_delete=models.PROTECT)
     customer = models.ForeignKey("consult.Customer", on_delete=models.PROTECT)
+
+    status_fields = ["status"]
 
     class Meta:
         ordering = ("-datetime",)

@@ -8,6 +8,7 @@ from consult.views.admin.booking import (
     BookingDetail,
     BookingUpdate,
     BookingDelete,
+    BookingCancel,
 )
 from consult.serializers import BookingAdminSerializer
 
@@ -29,4 +30,5 @@ urlpatterns = [
     path("<pk>", BookingDetail.as_view(), name="booking-detail"),
     path("<pk>/update", BookingUpdate.as_view(), name="booking-update"),
     path("<pk>/delete", BookingDelete.as_view(), name="booking-delete"),
+    path("<pk>/cancel", BookingCancel.as_view(), name="booking-cancel"),
 ]

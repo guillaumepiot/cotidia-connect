@@ -1,0 +1,8 @@
+{% extends "admin/generic/page/detail.html" %}
+{% load i18n %}
+{% block content_actions %}
+<a href="{% url 'consult-admin:booking-cancel' object.id %}?next={% url 'consult-admin:booking-detail' object.id %}" class="btn btn--cancel btn--small">
+    {% trans "Cancel" %}
+</a>
+{{block.super}}
+{% endblock content_actions %}

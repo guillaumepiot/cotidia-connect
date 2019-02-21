@@ -185,18 +185,18 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 # Email
 
-DEFAULT_FROM_EMAIL = "info@cotdia.com"
+DEFAULT_FROM_EMAIL = "Cotidia Connect <info@cotidia.com>"
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 EMAIL_HOST = "smtp.mandrillapp.com"
 EMAIL_HOST_USER = "guillaumepiot"
-EMAIL_HOST_PASSWORD = "OGaSNOU3lKfK1qXQhDHsRA"
+EMAIL_HOST_PASSWORD = os.path.join("MANDRILL_API_KEY", "key-not-set")
 
 COTIMAIL_REPLY_EMAIL = DEFAULT_FROM_EMAIL
 COTIMAIL_SENDER = DEFAULT_FROM_EMAIL
-COTIMAIL_APPS = ["cotidia.account.notices"]
+COTIMAIL_APPS = ["cotidia.account.notices", "consult.notices"]
 COTIMAIL_QUEUE_MAIL = False
 COTIMAIL_LOG_MAIL = True
 

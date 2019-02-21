@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.views.static import serve
 
 from cotidia.account.views.admin import dashboard
+from consult.views.public import IndexView
 
 
 urlpatterns = [
@@ -30,6 +31,7 @@ urlpatterns = [
         "api/actionable/",
         include("cotidia.actionable.urls.api", namespace="actionable-api"),
     ),
+    path("", IndexView.as_view()),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

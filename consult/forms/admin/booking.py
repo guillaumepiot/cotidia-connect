@@ -1,6 +1,6 @@
 from django import forms
 
-from betterforms.forms import BetterModelForm
+from betterforms.forms import BetterForm, BetterModelForm
 
 from consult.models import Booking
 
@@ -38,3 +38,19 @@ class BookingAddForm(BetterModelForm):
 
 class BookingUpdateForm(BookingAddForm):
     pass
+
+
+class BookingCancelForm(BetterModelForm):
+    status_notes = forms.CharField(
+        max_length=500,
+        widget=forms.Textarea,
+        label="Describe reasons for cancellation (optional)",
+        required=False,
+    )
+
+    class Meta:
+        model = Booking
+        fields = ["status_notes"]
+        fieldsets = (
+            ("info", {"fields": ("status_notes",), "legend": "Cancel booking"}),
+        )
