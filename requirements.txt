@@ -13,7 +13,7 @@ chardet==3.0.4
 -e git+git@github.com:guillaumepiot/cotidia-team.git@5cd8bd30c1d0143fdfb38d003cec4afe8ca7d3a3#egg=cotidia_team
 cssselect2==0.2.1
 defusedxml==0.5.0
-Django==2.1.5
+Django==2.1.11
 django-anymail==1.0
 django-appconf==1.0.2
 django-betterforms==1.2
