@@ -32,7 +32,7 @@ Faker==1.0.1
 html5lib==1.0.1
 idna==2.8
 phonenumberslite==8.10.3
-Pillow==5.4.1
+Pillow==9.0.0
 psycopg2-binary==2.7.6.1
 pycparser==2.19
 Pyphen==0.9.5
