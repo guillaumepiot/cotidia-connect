@@ -41,7 +41,7 @@ python-magic==0.4.15
 pytz==2018.9
 qrcode==6.0
 raven==6.10.0
-reportlab==3.5.12
+reportlab==3.5.55
 requests==2.21.0
 six==1.12.0
 text-unidecode==1.2
