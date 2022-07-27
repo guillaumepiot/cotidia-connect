@@ -14,7 +14,7 @@ chardet==3.0.4
 cssselect2==0.2.1
 defusedxml==0.5.0
 Django==2.1.5
-django-anymail==1.0
+django-anymail==1.2.1
 django-appconf==1.0.2
 django-betterforms==1.2
 django-cors-headers==2.4.0
